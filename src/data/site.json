@@ -1,0 +1,17 @@
+{
+  "name": "IREME Real Estate",
+  "tagline": "Your Property. Our Priority.",
+  "phone": "0788289323",
+  "phoneIntl": "+250788289323",
+  "whatsapp": "250788289323",
+  "email": "",
+  "address": "Kigali, Rwanda",
+  "hours": "",
+  "socials": {
+    "instagram": "",
+    "facebook": "",
+    "x": "",
+    "tiktok": ""
+  },
+  "locations": ["Kigali", "Gasabo", "Kicukiro", "Nyarugenge"]
+}
