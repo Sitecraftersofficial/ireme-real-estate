@@ -17,7 +17,7 @@ import cctv from "@/assets/svc-cctv.jpg";
 export const images: Record<string, string> = {
   hero, house, apartment, land, interior, construction, electrical, cctv,
 };
-export const img = (key: string) => images[key] ?? house;
+export const img = (key?: string) => (key && images[key]) || house;
 
 export const PROPERTY_TYPES = ["House", "Apartment", "Villa", "Land", "Commercial", "Office", "Warehouse", "Other"] as const;
 export const STATUSES = ["Available", "Pending", "Sold", "Rented", "Unavailable"] as const;
@@ -71,13 +71,13 @@ export function whatsappLink(message: string) {
 }
 
 export type Filters = {
-  transaction?: "sale" | "rent";
-  type?: string;
-  location?: string;
-  minPrice?: number;
-  maxPrice?: number;
-  bedrooms?: number;
-  sort?: "newest" | "price-asc" | "price-desc";
+  transaction?: "sale" | "rent" | undefined;
+  type?: string | undefined;
+  location?: string | undefined;
+  minPrice?: number | undefined;
+  maxPrice?: number | undefined;
+  bedrooms?: number | undefined;
+  sort?: "newest" | "price-asc" | "price-desc" | undefined;
 };
 
 export function filterProperties(list: Property[], f: Filters) {
