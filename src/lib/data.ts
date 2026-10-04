@@ -15,11 +15,27 @@ import cctv from "@/assets/svc-cctv.jpg";
 
 /** Image keys usable from the JSON files. Add a file to src/assets and register it here. */
 export const images: Record<string, string> = {
-  hero, house, apartment, land, interior, construction, electrical, cctv,
+  hero,
+  house,
+  apartment,
+  land,
+  interior,
+  construction,
+  electrical,
+  cctv,
 };
 export const img = (key?: string) => (key && images[key]) || house;
 
-export const PROPERTY_TYPES = ["House", "Apartment", "Villa", "Land", "Commercial", "Office", "Warehouse", "Other"] as const;
+export const PROPERTY_TYPES = [
+  "House",
+  "Apartment",
+  "Villa",
+  "Land",
+  "Commercial",
+  "Office",
+  "Warehouse",
+  "Other",
+] as const;
 export const STATUSES = ["Available", "Pending", "Sold", "Rented", "Unavailable"] as const;
 
 const propertySchema = z.object({
@@ -43,16 +59,29 @@ const propertySchema = z.object({
 export type Property = z.infer<typeof propertySchema>;
 
 const postSchema = z.object({
-  slug: z.string(), title: z.string(), excerpt: z.string(), date: z.string(),
-  image: z.string(), body: z.array(z.string()),
+  slug: z.string(),
+  title: z.string(),
+  excerpt: z.string(),
+  date: z.string(),
+  image: z.string(),
+  body: z.array(z.string()),
 });
 export type Post = z.infer<typeof postSchema>;
 
-export const site = z.object({
-  name: z.string(), tagline: z.string(), phone: z.string(), phoneIntl: z.string(),
-  whatsapp: z.string(), email: z.string(), address: z.string(), hours: z.string(),
-  socials: z.record(z.string(), z.string()), locations: z.array(z.string()),
-}).parse(siteJson);
+export const site = z
+  .object({
+    name: z.string(),
+    tagline: z.string(),
+    phone: z.string(),
+    phoneIntl: z.string(),
+    whatsapp: z.string(),
+    email: z.string(),
+    address: z.string(),
+    hours: z.string(),
+    socials: z.record(z.string(), z.string()),
+    locations: z.array(z.string()),
+  })
+  .parse(siteJson);
 
 export const properties: Property[] = z.array(propertySchema).parse(propertiesJson);
 export const posts: Post[] = z.array(postSchema).parse(postsJson);
@@ -81,13 +110,14 @@ export type Filters = {
 };
 
 export function filterProperties(list: Property[], f: Filters) {
-  let out = list.filter((p) =>
-    (!f.transaction || p.transaction === f.transaction) &&
-    (!f.type || p.type === f.type) &&
-    (!f.location || p.district === f.location || p.city === f.location) &&
-    (f.minPrice == null || p.price >= f.minPrice) &&
-    (f.maxPrice == null || p.price <= f.maxPrice) &&
-    (!f.bedrooms || p.bedrooms >= f.bedrooms),
+  let out = list.filter(
+    (p) =>
+      (!f.transaction || p.transaction === f.transaction) &&
+      (!f.type || p.type === f.type) &&
+      (!f.location || p.district === f.location || p.city === f.location) &&
+      (f.minPrice == null || p.price >= f.minPrice) &&
+      (f.maxPrice == null || p.price <= f.maxPrice) &&
+      (!f.bedrooms || p.bedrooms >= f.bedrooms),
   );
   if (f.sort === "price-asc") out = [...out].sort((a, b) => a.price - b.price);
   if (f.sort === "price-desc") out = [...out].sort((a, b) => b.price - a.price);
