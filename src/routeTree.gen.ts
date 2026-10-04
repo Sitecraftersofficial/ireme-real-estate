@@ -10,15 +10,35 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as BuyRouteImport } from './routes/buy'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as LandRouteImport } from './routes/land'
+import { Route as ListPropertyRouteImport } from './routes/list-property'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RentRouteImport } from './routes/rent'
+import { Route as RequestPropertyRouteImport } from './routes/request-property'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
+import { Route as ServicesCctvSecurityRouteImport } from './routes/services.cctv-security'
+import { Route as ServicesConstructionRouteImport } from './routes/services.construction'
+import { Route as ServicesElectricalRouteImport } from './routes/services.electrical'
+import { Route as ServicesInteriorDesignRouteImport } from './routes/services.interior-design'
+import { Route as ServicesPropertyManagementRouteImport } from './routes/services.property-management'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuyRoute = BuyRouteImport.update({
@@ -26,14 +46,59 @@ const BuyRoute = BuyRouteImport.update({
   path: '/buy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LandRoute = LandRouteImport.update({
   id: '/land',
   path: '/land',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ListPropertyRoute = ListPropertyRouteImport.update({
+  id: '/list-property',
+  path: '/list-property',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RentRoute = RentRouteImport.update({
   id: '/rent',
   path: '/rent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestPropertyRoute = RequestPropertyRouteImport.update({
+  id: '/request-property',
+  path: '/request-property',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PropertiesIndexRoute = PropertiesIndexRouteImport.update({
@@ -46,54 +111,196 @@ const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
   path: '/properties/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesCctvSecurityRoute = ServicesCctvSecurityRouteImport.update({
+  id: '/services/cctv-security',
+  path: '/services/cctv-security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesConstructionRoute = ServicesConstructionRouteImport.update({
+  id: '/services/construction',
+  path: '/services/construction',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesElectricalRoute = ServicesElectricalRouteImport.update({
+  id: '/services/electrical',
+  path: '/services/electrical',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesInteriorDesignRoute = ServicesInteriorDesignRouteImport.update({
+  id: '/services/interior-design',
+  path: '/services/interior-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPropertyManagementRoute =
+  ServicesPropertyManagementRouteImport.update({
+    id: '/services/property-management',
+    path: '/services/property-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/buy': typeof BuyRoute
+  '/contact': typeof ContactRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/faqs': typeof FaqsRoute
   '/land': typeof LandRoute
+  '/list-property': typeof ListPropertyRoute
+  '/privacy': typeof PrivacyRoute
   '/rent': typeof RentRoute
+  '/request-property': typeof RequestPropertyRoute
+  '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/services/cctv-security': typeof ServicesCctvSecurityRoute
+  '/services/construction': typeof ServicesConstructionRoute
+  '/services/electrical': typeof ServicesElectricalRoute
+  '/services/interior-design': typeof ServicesInteriorDesignRoute
+  '/services/property-management': typeof ServicesPropertyManagementRoute
+  '/blog/': typeof BlogIndexRoute
   '/properties/': typeof PropertiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/buy': typeof BuyRoute
+  '/contact': typeof ContactRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/faqs': typeof FaqsRoute
   '/land': typeof LandRoute
+  '/list-property': typeof ListPropertyRoute
+  '/privacy': typeof PrivacyRoute
   '/rent': typeof RentRoute
+  '/request-property': typeof RequestPropertyRoute
+  '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/services/cctv-security': typeof ServicesCctvSecurityRoute
+  '/services/construction': typeof ServicesConstructionRoute
+  '/services/electrical': typeof ServicesElectricalRoute
+  '/services/interior-design': typeof ServicesInteriorDesignRoute
+  '/services/property-management': typeof ServicesPropertyManagementRoute
+  '/blog': typeof BlogIndexRoute
   '/properties': typeof PropertiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/buy': typeof BuyRoute
+  '/contact': typeof ContactRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/faqs': typeof FaqsRoute
   '/land': typeof LandRoute
+  '/list-property': typeof ListPropertyRoute
+  '/privacy': typeof PrivacyRoute
   '/rent': typeof RentRoute
+  '/request-property': typeof RequestPropertyRoute
+  '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/services/cctv-security': typeof ServicesCctvSecurityRoute
+  '/services/construction': typeof ServicesConstructionRoute
+  '/services/electrical': typeof ServicesElectricalRoute
+  '/services/interior-design': typeof ServicesInteriorDesignRoute
+  '/services/property-management': typeof ServicesPropertyManagementRoute
+  '/blog/': typeof BlogIndexRoute
   '/properties/': typeof PropertiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/buy' | '/land' | '/rent' | '/properties/$slug' | '/properties/'
+    | '/'
+    | '/about'
+    | '/buy'
+    | '/contact'
+    | '/disclaimer'
+    | '/faqs'
+    | '/land'
+    | '/list-property'
+    | '/privacy'
+    | '/rent'
+    | '/request-property'
+    | '/terms'
+    | '/blog/$slug'
+    | '/properties/$slug'
+    | '/services/cctv-security'
+    | '/services/construction'
+    | '/services/electrical'
+    | '/services/interior-design'
+    | '/services/property-management'
+    | '/blog/'
+    | '/properties/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/buy' | '/land' | '/rent' | '/properties/$slug' | '/properties'
+  to:
+    | '/'
+    | '/about'
+    | '/buy'
+    | '/contact'
+    | '/disclaimer'
+    | '/faqs'
+    | '/land'
+    | '/list-property'
+    | '/privacy'
+    | '/rent'
+    | '/request-property'
+    | '/terms'
+    | '/blog/$slug'
+    | '/properties/$slug'
+    | '/services/cctv-security'
+    | '/services/construction'
+    | '/services/electrical'
+    | '/services/interior-design'
+    | '/services/property-management'
+    | '/blog'
+    | '/properties'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/buy'
+    | '/contact'
+    | '/disclaimer'
+    | '/faqs'
     | '/land'
+    | '/list-property'
+    | '/privacy'
     | '/rent'
+    | '/request-property'
+    | '/terms'
+    | '/blog/$slug'
     | '/properties/$slug'
+    | '/services/cctv-security'
+    | '/services/construction'
+    | '/services/electrical'
+    | '/services/interior-design'
+    | '/services/property-management'
+    | '/blog/'
     | '/properties/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   BuyRoute: typeof BuyRoute
+  ContactRoute: typeof ContactRoute
+  DisclaimerRoute: typeof DisclaimerRoute
+  FaqsRoute: typeof FaqsRoute
   LandRoute: typeof LandRoute
+  ListPropertyRoute: typeof ListPropertyRoute
+  PrivacyRoute: typeof PrivacyRoute
   RentRoute: typeof RentRoute
+  RequestPropertyRoute: typeof RequestPropertyRoute
+  TermsRoute: typeof TermsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
+  ServicesCctvSecurityRoute: typeof ServicesCctvSecurityRoute
+  ServicesConstructionRoute: typeof ServicesConstructionRoute
+  ServicesElectricalRoute: typeof ServicesElectricalRoute
+  ServicesInteriorDesignRoute: typeof ServicesInteriorDesignRoute
+  ServicesPropertyManagementRoute: typeof ServicesPropertyManagementRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
 }
 
@@ -106,11 +313,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buy': {
       id: '/buy'
       path: '/buy'
       fullPath: '/buy'
       preLoaderRoute: typeof BuyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faqs': {
+      id: '/faqs'
+      path: '/faqs'
+      fullPath: '/faqs'
+      preLoaderRoute: typeof FaqsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/land': {
@@ -120,11 +355,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LandRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/list-property': {
+      id: '/list-property'
+      path: '/list-property'
+      fullPath: '/list-property'
+      preLoaderRoute: typeof ListPropertyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rent': {
       id: '/rent'
       path: '/rent'
       fullPath: '/rent'
       preLoaderRoute: typeof RentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request-property': {
+      id: '/request-property'
+      path: '/request-property'
+      fullPath: '/request-property'
+      preLoaderRoute: typeof RequestPropertyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/properties/': {
@@ -141,15 +418,65 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropertiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/cctv-security': {
+      id: '/services/cctv-security'
+      path: '/services/cctv-security'
+      fullPath: '/services/cctv-security'
+      preLoaderRoute: typeof ServicesCctvSecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/construction': {
+      id: '/services/construction'
+      path: '/services/construction'
+      fullPath: '/services/construction'
+      preLoaderRoute: typeof ServicesConstructionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/electrical': {
+      id: '/services/electrical'
+      path: '/services/electrical'
+      fullPath: '/services/electrical'
+      preLoaderRoute: typeof ServicesElectricalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/interior-design': {
+      id: '/services/interior-design'
+      path: '/services/interior-design'
+      fullPath: '/services/interior-design'
+      preLoaderRoute: typeof ServicesInteriorDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/property-management': {
+      id: '/services/property-management'
+      path: '/services/property-management'
+      fullPath: '/services/property-management'
+      preLoaderRoute: typeof ServicesPropertyManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   BuyRoute: BuyRoute,
+  ContactRoute: ContactRoute,
+  DisclaimerRoute: DisclaimerRoute,
+  FaqsRoute: FaqsRoute,
   LandRoute: LandRoute,
+  ListPropertyRoute: ListPropertyRoute,
+  PrivacyRoute: PrivacyRoute,
   RentRoute: RentRoute,
+  RequestPropertyRoute: RequestPropertyRoute,
+  TermsRoute: TermsRoute,
+  BlogSlugRoute: BlogSlugRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
+  ServicesCctvSecurityRoute: ServicesCctvSecurityRoute,
+  ServicesConstructionRoute: ServicesConstructionRoute,
+  ServicesElectricalRoute: ServicesElectricalRoute,
+  ServicesInteriorDesignRoute: ServicesInteriorDesignRoute,
+  ServicesPropertyManagementRoute: ServicesPropertyManagementRoute,
+  BlogIndexRoute: BlogIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
 }
 export const routeTree = rootRouteImport
