@@ -2,7 +2,8 @@ import { Link } from "@/router";
 import { MapPin, Phone, MessageCircle, Mail } from "lucide-react";
 import { site, whatsappLink } from "@/lib/data";
 import { services } from "@/lib/services";
-import logoJpg from "@/assets/ireme-logo-crop.jpg";
+import logoJpg from "@/assets/ireme-logo.jpeg";
+import { FollowBand } from "./Social";
 import { Logo } from "./Header";
 
 /** Footer logo: original JPG version on its beige surface (better on dark bg). */
@@ -31,6 +32,7 @@ export function Footer() {
             Rwanda.
           </p>
           <p className="mt-4 font-display text-xl italic text-gold">{site.tagline}</p>
+          <FollowBand className="mt-6" />
         </div>
         <div>
           <p className={h}>Explore</p>

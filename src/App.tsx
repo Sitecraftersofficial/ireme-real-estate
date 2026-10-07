@@ -36,6 +36,7 @@ import {
   usePageMeta,
 } from "@/components/site/Common";
 import { Listing } from "@/components/site/Listing";
+import { VideoGallery, FollowBand } from "@/components/site/Social";
 import {
   faqs,
   formatPrice,
@@ -138,6 +139,8 @@ function HomePage() {
           ))}
         </div>
       </section>
+
+      <VideoGallery />
 
       <section className="bg-secondary py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
@@ -646,8 +649,12 @@ function ContactPage() {
               <MessageCircle className="h-6 w-6" />
             </span>
             <p className="mt-4 font-display text-xl font-semibold text-primary">WhatsApp us</p>
-            <p className="mt-1 text-sm text-muted-foreground">Fastest response — usually within the hour during working days.</p>
-            <p className="mt-3 text-sm font-semibold text-success group-hover:underline">Start a chat →</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Fastest response — usually within the hour during working days.
+            </p>
+            <p className="mt-3 text-sm font-semibold text-success group-hover:underline">
+              Start a chat →
+            </p>
           </a>
           <a
             href={`tel:${site.phoneIntl}`}
@@ -657,8 +664,12 @@ function ContactPage() {
               <Phone className="h-6 w-6" />
             </span>
             <p className="mt-4 font-display text-xl font-semibold text-primary">Call us</p>
-            <p className="mt-1 text-sm text-muted-foreground">Talk directly to a member of the IREME team.</p>
-            <p className="mt-3 text-sm font-semibold text-primary group-hover:underline">{site.phone} →</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Talk directly to a member of the IREME team.
+            </p>
+            <p className="mt-3 text-sm font-semibold text-primary group-hover:underline">
+              {site.phone} →
+            </p>
           </a>
           <a
             href={`mailto:${site.email}?subject=${encodeURIComponent("Property enquiry")}`}
@@ -668,9 +679,20 @@ function ContactPage() {
               <Mail className="h-6 w-6" />
             </span>
             <p className="mt-4 font-display text-xl font-semibold text-primary">Email us</p>
-            <p className="mt-1 text-sm text-muted-foreground">Send detailed enquiries or documents at your convenience.</p>
-            <p className="mt-3 break-all text-sm font-semibold text-primary group-hover:underline">{site.email} →</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Send detailed enquiries or documents at your convenience.
+            </p>
+            <p className="mt-3 break-all text-sm font-semibold text-primary group-hover:underline">
+              {site.email} →
+            </p>
           </a>
+        </div>
+        <div className="mt-6 rounded-xl border border-border bg-card p-6">
+          <FollowBand />
+          <p className="mt-3 text-sm text-muted-foreground">
+            See our latest property tours and walkthrough videos on YouTube, TikTok, Instagram and
+            Facebook.
+          </p>
         </div>
       </section>
 
@@ -678,11 +700,15 @@ function ContactPage() {
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
         <div className="grid gap-12 lg:grid-cols-[1fr_400px]">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">Send a message</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold text-primary">Tell us how we can help</h2>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">
+              Send a message
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-semibold text-primary">
+              Tell us how we can help
+            </h2>
             <p className="mt-3 max-w-xl text-muted-foreground">
-              Whether you're buying, renting, selling or need one of our services — fill in the form and
-              your message opens in WhatsApp, ready to send straight to our team.
+              Whether you're buying, renting, selling or need one of our services — fill in the form
+              and your message opens in WhatsApp, ready to send straight to our team.
             </p>
             <div className="mt-8">
               <WhatsAppForm
@@ -703,21 +729,38 @@ function ContactPage() {
               <p className="mt-3 flex items-start gap-2 text-sm">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" /> {site.address}
               </p>
-              <p className="mt-4 text-xs font-bold uppercase tracking-[0.25em] text-gold">Office hours</p>
+              <p className="mt-4 text-xs font-bold uppercase tracking-[0.25em] text-gold">
+                Office hours
+              </p>
               <p className="mt-2 text-sm">Monday – Friday: 8:00 AM – 6:00 PM</p>
               <p className="text-sm">Saturday: 9:00 AM – 4:00 PM</p>
-              <p className="text-sm text-primary-foreground/70">Sunday: Closed (WhatsApp still monitored)</p>
+              <p className="text-sm text-primary-foreground/70">
+                Sunday: Closed (WhatsApp still monitored)
+              </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">What happens next?</p>
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">
+                What happens next?
+              </p>
               <ol className="mt-4 space-y-3 text-sm text-muted-foreground">
-                <li className="flex gap-2"><span className="font-semibold text-primary">1.</span> We read your message and reply on WhatsApp or by phone.</li>
-                <li className="flex gap-2"><span className="font-semibold text-primary">2.</span> We match you with properties or services that fit your request.</li>
-                <li className="flex gap-2"><span className="font-semibold text-primary">3.</span> We arrange viewings or a consultation at your convenience.</li>
+                <li className="flex gap-2">
+                  <span className="font-semibold text-primary">1.</span> We read your message and
+                  reply on WhatsApp or by phone.
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold text-primary">2.</span> We match you with
+                  properties or services that fit your request.
+                </li>
+                <li className="flex gap-2">
+                  <span className="font-semibold text-primary">3.</span> We arrange viewings or a
+                  consultation at your convenience.
+                </li>
               </ol>
             </div>
             <div className="rounded-xl border border-border bg-card p-6 text-center">
-              <p className="font-display text-lg font-semibold text-primary">Looking for a property already?</p>
+              <p className="font-display text-lg font-semibold text-primary">
+                Looking for a property already?
+              </p>
               <Link
                 to="/properties"
                 className="mt-3 inline-block rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-navy-deep"
@@ -774,7 +817,10 @@ function ListPropertyPage() {
               d: "No hidden fees. We agree on terms with you before anything is published.",
             },
           ].map(({ icon: Icon, t, d }) => (
-            <div key={t} className="rounded-xl border border-border bg-card p-6 transition hover:shadow-elegant">
+            <div
+              key={t}
+              className="rounded-xl border border-border bg-card p-6 transition hover:shadow-elegant"
+            >
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gold-soft text-primary">
                 <Icon className="h-5 w-5" />
               </span>
@@ -789,13 +835,31 @@ function ListPropertyPage() {
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
         <div className="rounded-xl bg-primary px-6 py-12 text-primary-foreground md:px-12">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">How it works</p>
-          <h2 className="mt-3 font-display text-3xl font-semibold md:text-4xl">From listing to closing, in four steps</h2>
+          <h2 className="mt-3 font-display text-3xl font-semibold md:text-4xl">
+            From listing to closing, in four steps
+          </h2>
           <div className="mt-10 grid gap-8 md:grid-cols-4">
             {[
-              { n: "1", t: "Share your property", d: "Send us the details below — type, location, price and photos if you have them." },
-              { n: "2", t: "Property review & visit", d: "We verify the details and arrange a visit or call to assess it properly." },
-              { n: "3", t: "Listing goes live", d: "We prepare the listing and publish it across our channels to qualified prospects." },
-              { n: "4", t: "We handle viewings", d: "We screen enquiries, arrange viewings and keep you updated on every offer." },
+              {
+                n: "1",
+                t: "Share your property",
+                d: "Send us the details below — type, location, price and photos if you have them.",
+              },
+              {
+                n: "2",
+                t: "Property review & visit",
+                d: "We verify the details and arrange a visit or call to assess it properly.",
+              },
+              {
+                n: "3",
+                t: "Listing goes live",
+                d: "We prepare the listing and publish it across our channels to qualified prospects.",
+              },
+              {
+                n: "4",
+                t: "We handle viewings",
+                d: "We screen enquiries, arrange viewings and keep you updated on every offer.",
+              },
             ].map((s) => (
               <div key={s.n}>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold font-display text-lg font-bold text-foreground">
@@ -814,10 +878,12 @@ function ListPropertyPage() {
         <div className="grid gap-12 lg:grid-cols-[1fr_400px]">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">Get started</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold text-primary">Tell us about your property</h2>
+            <h2 className="mt-3 font-display text-4xl font-semibold text-primary">
+              Tell us about your property
+            </h2>
             <p className="mt-3 max-w-xl text-muted-foreground">
-              Fill in the details below and your message opens in WhatsApp, ready to send. We reply with
-              next steps — usually the same day.
+              Fill in the details below and your message opens in WhatsApp, ready to send. We reply
+              with next steps — usually the same day.
             </p>
             <div className="mt-8">
               <WhatsAppForm
@@ -835,7 +901,15 @@ function ListPropertyPage() {
                     name: "type",
                     label: "Property type",
                     type: "select",
-                    options: ["House", "Apartment", "Villa", "Land", "Commercial", "Office", "Other"],
+                    options: [
+                      "House",
+                      "Apartment",
+                      "Villa",
+                      "Land",
+                      "Commercial",
+                      "Office",
+                      "Other",
+                    ],
                   },
                   { name: "location", label: "Location", required: true },
                   { name: "price", label: "Expected price (RWF)" },
@@ -847,7 +921,9 @@ function ListPropertyPage() {
 
           <aside className="space-y-4">
             <div className="rounded-xl border border-border bg-card p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">What helps us price it right</p>
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">
+                What helps us price it right
+              </p>
               <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                 {[
                   "Exact location — district, sector or nearest landmark",
@@ -862,10 +938,12 @@ function ListPropertyPage() {
               </ul>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">Also need this?</p>
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">
+                Also need this?
+              </p>
               <p className="mt-3 text-sm text-muted-foreground">
-                We manage properties, handle tenant sourcing, and offer construction and interior design
-                services for owners preparing a home for the market.
+                We manage properties, handle tenant sourcing, and offer construction and interior
+                design services for owners preparing a home for the market.
               </p>
               <Link
                 to="/about"
