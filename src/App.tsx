@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   ArrowRight,
   Award,
+  ChevronLeft,
+  ChevronRight,
   Bath,
   BedDouble,
   Camera,
@@ -52,35 +54,104 @@ import { services } from "@/lib/services";
 
 /* ---------------------------------- Home ---------------------------------- */
 
+const HERO_SLIDES = ["hero", "house", "apartment", "interior", "land"].map((key) => ({
+  key,
+  src: img(key),
+}));
+
+function HeroSlideshow() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused || HERO_SLIDES.length < 2) return;
+    const timer = setInterval(() => {
+      setActive((i) => (i + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [paused]);
+
+  const goTo = (i: number) => setActive((i + HERO_SLIDES.length) % HERO_SLIDES.length);
+
+  return (
+    <div
+      className="absolute inset-0 -z-10"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      aria-roledescription="carousel"
+      aria-label="Featured properties"
+    >
+      {HERO_SLIDES.map((slide, i) => (
+        <img
+          key={slide.key}
+          src={slide.src}
+          alt="Kigali property"
+          width={1920}
+          height={1088}
+          aria-hidden={i !== active}
+          className={`absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-out ${
+            i === active ? "scale-100 opacity-100" : "scale-105 opacity-0"
+          }`}
+        />
+      ))}
+      <div className="absolute inset-0 bg-black/25 md:bg-linear-to-r md:from-navy-deep/70 md:via-navy-deep/20 md:to-transparent" />
+
+      <button
+        type="button"
+        aria-label="Previous slide"
+        onClick={() => goTo(active - 1)}
+        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/40 bg-black/30 p-2 text-white backdrop-blur transition hover:scale-110 hover:bg-black/50 md:left-4 md:p-2.5"
+      >
+        <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
+      </button>
+      <button
+        type="button"
+        aria-label="Next slide"
+        onClick={() => goTo(active + 1)}
+        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/40 bg-black/30 p-2 text-white backdrop-blur transition hover:scale-110 hover:bg-black/50 md:right-4 md:p-2.5"
+      >
+        <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
+      </button>
+
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1.5 md:bottom-6 md:gap-2">
+        {HERO_SLIDES.map((slide, i) => (
+          <button
+            key={slide.key}
+            type="button"
+            aria-label={`Go to slide ${i + 1}`}
+            aria-current={i === active}
+            onClick={() => goTo(i)}
+            className={`h-2 rounded-full transition-all ${
+              i === active ? "w-8 bg-gold" : "w-2 bg-white/50 hover:bg-white/80"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function HomePage() {
   usePageMeta(
     "IREME Real Estate — Homes, Apartments & Land in Kigali",
     "Find homes, apartments, land and investment properties across Kigali and Rwanda with IREME Real Estate. Your Property. Our Priority.",
   );
-  const hero = img("hero");
   const featured = properties.filter((p) => p.featured).slice(0, 6);
   return (
     <>
       <section className="relative isolate overflow-hidden bg-navy-deep text-primary-foreground">
-        <img
-          src={hero}
-          alt="Modern villa in Kigali at dusk"
-          width={1920}
-          height={1088}
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 -z-10 bg-linear-to-r from-navy-deep via-navy-deep/70 to-navy-deep/10" />
-        <div className="mx-auto max-w-7xl px-4 pb-16 pt-20 md:px-6 md:pt-32">
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold">
+        <HeroSlideshow />
+        <div className="mx-auto flex min-h-[80svh] max-w-7xl flex-col justify-end px-4 pb-10 pt-16 md:min-h-[88svh] md:px-6 md:pb-14 md:pt-24">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-gold drop-shadow">
             Real estate in Rwanda
           </p>
-          <h1 className="mt-5 max-w-3xl text-5xl font-semibold leading-[1.05] md:text-7xl">
+          <h1 className="mt-4 max-w-3xl text-4xl font-semibold uppercase leading-[1.05] drop-shadow md:text-6xl">
             Find a property you'll be proud to call home.
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-primary-foreground/85">
+          <p className="mt-4 max-w-xl text-lg text-primary-foreground/90 drop-shadow">
             Discover homes, apartments, land and investment properties across Kigali and Rwanda.
           </p>
-          <div className="mt-12 text-foreground">
+          <div className="mt-6 max-w-4xl text-foreground">
             <SearchBox />
           </div>
         </div>

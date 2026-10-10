@@ -27,28 +27,31 @@ export function SearchBox() {
   };
 
   const field =
-    "h-12 w-full rounded-md border border-input bg-background px-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring";
+    "h-9 w-full rounded-md border border-white/30 bg-white/10 px-2.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-gold/60 [&>option]:text-primary";
   const label =
-    "mb-1.5 block text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground";
+    "mb-0.5 block text-[10px] font-bold uppercase tracking-[0.14em] text-white/70";
 
   return (
-    <form onSubmit={submit} className="rounded-xl bg-card p-5 shadow-elegant md:p-6">
-      <p className="mb-4 font-display text-2xl font-semibold text-primary">
+    <form
+      onSubmit={submit}
+      className="rounded-2xl border border-white/25 bg-white/10 p-3 shadow-elegant backdrop-blur-md md:p-4"
+    >
+      <p className="mb-2.5 font-display text-base font-semibold text-white md:text-lg">
         What are you looking for?
       </p>
-      <div className="mb-5 inline-flex rounded-md bg-secondary p-1">
+      <div className="mb-3 inline-flex rounded-md bg-white/10 p-0.5">
         {(["sale", "rent", "land"] as Mode[]).map((m) => (
           <button
             type="button"
             key={m}
             onClick={() => setMode(m)}
-            className={`rounded px-5 py-2 text-sm font-bold uppercase tracking-wider transition ${mode === m ? "bg-primary text-primary-foreground" : "text-primary"}`}
+            className={`rounded px-3 py-1 text-xs font-bold uppercase tracking-wider transition md:px-4 md:py-1.5 ${mode === m ? "bg-gold text-primary" : "text-white/80 hover:text-white"}`}
           >
             {m === "sale" ? "Buy" : m === "rent" ? "Rent" : "Land"}
           </button>
         ))}
       </div>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+      <div className="grid gap-2 md:grid-cols-3 lg:grid-cols-5">
         <div>
           <label className={label}>Location</label>
           <select className={field} value={location} onChange={(e) => setLocation(e.target.value)}>
@@ -103,7 +106,7 @@ export function SearchBox() {
           </div>
         )}
       </div>
-      <button className="mt-5 flex h-12 w-full items-center justify-center gap-2 rounded-md bg-primary font-semibold uppercase tracking-wider text-primary-foreground hover:bg-navy-deep md:w-auto md:px-10">
+      <button className="mt-3 flex h-9 w-full items-center justify-center gap-2 rounded-md bg-gold text-sm font-semibold uppercase tracking-wider text-primary transition hover:brightness-110 md:w-auto md:px-8">
         <Search className="h-4 w-4" /> Search properties
       </button>
     </form>
