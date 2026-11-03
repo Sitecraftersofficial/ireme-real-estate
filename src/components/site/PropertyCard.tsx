@@ -60,10 +60,7 @@ export function PropertyCard({ p }: { p: Property }) {
         </div>
       </div>
       <div className="p-5">
-        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold">
-          {p.type}
-          {p.sample && " · Sample"}
-        </p>
+        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold">{p.type}</p>
         <Link to="/properties/$slug" params={{ slug: p.slug }}>
           <h3 className="mt-1 text-2xl font-semibold text-primary">{p.title}</h3>
         </Link>

@@ -1,7 +1,15 @@
 import { useMemo, useState } from "react";
 import { Link } from "@/router";
-import { PROPERTY_TYPES, type Filters, filterProperties, properties, site } from "@/lib/data";
+import {
+  PROPERTY_TYPES,
+  type Filters,
+  filterProperties,
+  allProperties,
+  videos,
+  site,
+} from "@/lib/data";
 import { PropertyCard } from "./PropertyCard";
+import { PropertyShorts } from "./VideoShort";
 
 export function Listing({
   initial,
@@ -13,7 +21,7 @@ export function Listing({
   lockType?: boolean;
 }) {
   const [f, setF] = useState<Filters>(initial ?? {});
-  const list = useMemo(() => filterProperties(properties, f), [f]);
+  const list = useMemo(() => filterProperties(allProperties, f), [f]);
   const set = (k: keyof Filters, v: string) =>
     setF((o) => ({
       ...o,
@@ -104,11 +112,26 @@ export function Listing({
         {list.length} {list.length === 1 ? "property" : "properties"} found
       </p>
       {list.length ? (
-        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((p) => (
-            <PropertyCard key={p.slug} p={p} />
-          ))}
-        </div>
+        <>
+          <PropertyShorts
+            videos={list
+              .filter((p) => (p.videos ?? []).length > 0)
+              .flatMap((p) =>
+                (p.videos ?? []).map((key) => ({
+                  key: `${p.slug}-${key}`,
+                  src: videos[key] ?? "",
+                  title: p.title,
+                })),
+              )}
+          />
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {list
+              .filter((p) => (p.videos ?? []).length === 0)
+              .map((p) => (
+                <PropertyCard key={p.slug} p={p} />
+              ))}
+          </div>
+        </>
       ) : (
         <div className="rounded-lg border border-dashed border-border p-12 text-center">
           <p className="font-display text-2xl text-primary">No properties match your search yet.</p>
