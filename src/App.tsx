@@ -39,6 +39,7 @@ import {
 } from "@/components/site/Common";
 import { Listing } from "@/components/site/Listing";
 import { UmucyoAds } from "@/components/site/UmucyoAds";
+import { ShareButton } from "@/components/site/ShareButton";
 import { VideoShort } from "@/components/site/VideoShort";
 import { VideoGallery, FollowBand } from "@/components/site/Social";
 import {
@@ -464,32 +465,62 @@ function PropertyDetailPage() {
         / {p.title}
       </nav>
       {!isVideoListing && (
-        <div className="grid gap-4 lg:grid-cols-[1fr_140px]">
-          <img
-            src={img(p.images[active] ?? p.images[0])}
-            alt={p.title}
-            width={1280}
-            height={896}
-            className="aspect-16/10 w-full rounded-xl object-cover"
-          />
-          <div className="flex gap-3 lg:flex-col">
-            {p.images.map((k, i) => (
-              <button
-                key={k + i}
-                onClick={() => setActive(i)}
-                className={`overflow-hidden rounded-lg border-2 ${i === active ? "border-gold" : "border-transparent"}`}
-              >
-                <img
-                  src={img(k)}
-                  alt=""
-                  loading="lazy"
-                  width={280}
-                  height={196}
-                  className="aspect-4/3 w-28 object-cover lg:w-full"
-                />
-              </button>
-            ))}
+        <div className="grid gap-4">
+          {/* Main photo with prev/next arrows — works on all screen sizes */}
+          <div className="relative overflow-hidden rounded-xl bg-muted">
+            <img
+              src={img(p.images[active] ?? p.images[0])}
+              alt={p.title}
+              width={1280}
+              height={896}
+              className="mx-auto aspect-16/10 max-h-[70vh] w-auto max-w-full object-cover"
+              style={{ maxWidth: "min(100%, 1100px)" }}
+            />
+            {p.images.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  aria-label="Previous photo"
+                  onClick={() => setActive((i) => (i - 1 + p.images.length) % p.images.length)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/40 bg-black/30 p-2 text-white backdrop-blur transition hover:scale-110 hover:bg-black/50"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next photo"
+                  onClick={() => setActive((i) => (i + 1) % p.images.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/40 bg-black/30 p-2 text-white backdrop-blur transition hover:scale-110 hover:bg-black/50"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+                <span className="absolute bottom-3 right-3 rounded bg-black/60 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur">
+                  {(active ?? 0) + 1} / {p.images.length}
+                </span>
+              </>
+            )}
           </div>
+          {/* Thumbnail filmstrip — wraps into rows instead of forcing a long page */}
+          {p.images.length > 1 && (
+            <div className="grid grid-cols-6 gap-2 sm:grid-cols-8 md:grid-cols-10">
+              {p.images.map((k, i) => (
+                <button
+                  key={k + i}
+                  onClick={() => setActive(i)}
+                  className={`overflow-hidden rounded-lg border-2 ${i === active ? "border-gold" : "border-transparent"}`}
+                >
+                  <img
+                    src={img(k)}
+                    alt=""
+                    loading="lazy"
+                    width={280}
+                    height={196}
+                    className="aspect-4/3 w-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -510,7 +541,7 @@ function PropertyDetailPage() {
       )}
 
       {!isVideoListing && (
-        <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_400px]">
+        <div className="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_360px] xl:grid-cols-[minmax(0,1fr)_400px]">
           <div>
             <div className="flex flex-wrap items-center gap-3">
               <StatusBadge status={p.status} />
@@ -518,12 +549,35 @@ function PropertyDetailPage() {
                 {p.type} · For {p.transaction === "sale" ? "sale" : "rent"}
               </span>
             </div>
-            <h1 className="mt-3 text-5xl font-semibold text-primary">{p.title}</h1>
-            <p className="mt-2 flex items-center gap-1.5 text-muted-foreground">
+            <h1 className="mt-3 text-3xl font-semibold text-primary sm:text-4xl md:text-5xl">
+              {p.title}
+            </h1>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <ShareButton
+                slug={p.slug}
+                title={p.title}
+                className="rounded-md bg-gold px-6 py-3 font-bold text-foreground transition hover:brightness-95"
+              />
+              <a
+                href={whatsappLink(waMsg)}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 rounded-md bg-success px-6 py-3 font-semibold text-primary-foreground transition hover:brightness-95"
+              >
+                <MessageCircle className="h-5 w-5" /> WhatsApp
+              </a>
+              <a
+                href={`tel:${site.phoneIntl}`}
+                className="flex items-center gap-2 rounded-md border border-border px-6 py-3 font-semibold transition hover:border-gold hover:text-gold"
+              >
+                <Phone className="h-5 w-5" /> Call {site.phone}
+              </a>
+            </div>
+            <p className="mt-3 flex items-center gap-1.5 text-muted-foreground">
               <MapPin className="h-4 w-4" /> {p.district}, {p.city}
             </p>
-            <p className="mt-5 text-3xl font-bold text-primary">{formatPrice(p)}</p>
-            <div className="mt-6 flex flex-wrap gap-8 border-y border-border py-5">
+            <p className="mt-4 text-3xl font-bold text-primary">{formatPrice(p)}</p>
+            <div className="mt-5 flex flex-wrap gap-x-8 gap-y-3 border-y border-border py-5">
               {p.bedrooms > 0 && (
                 <span className="flex items-center gap-2">
                   <BedDouble className="h-5 w-5 text-gold" /> {p.bedrooms} Bedrooms
@@ -550,22 +604,8 @@ function PropertyDetailPage() {
             </ul>
           </div>
 
-          <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
-            <a
-              href={whatsappLink(waMsg)}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-center gap-2 rounded-md bg-success py-4 font-semibold text-primary-foreground"
-            >
-              <MessageCircle className="h-5 w-5" /> Chat about this property on WhatsApp
-            </a>
-            <a
-              href={`tel:${site.phoneIntl}`}
-              className="flex items-center justify-center gap-2 rounded-md border border-border py-4 font-semibold"
-            >
-              <Phone className="h-5 w-5" /> Call {site.phone}
-            </a>
-            <h2 className="pt-4 text-2xl font-semibold text-primary">Request a viewing</h2>
+          <aside className="space-y-4 lg:sticky lg:top-28">
+            <h2 className="text-2xl font-semibold text-primary">Request a viewing</h2>
             <WhatsAppForm
               title={`Viewing request: ${p.title}`}
               submitLabel="Request viewing"

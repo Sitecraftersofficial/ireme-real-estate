@@ -21,6 +21,31 @@ import house23 from "@/assets/House2-3.jpeg";
 import umucyo1 from "@/assets/umucyo-1.jpeg";
 import umucyo2 from "@/assets/umucyo-2.jpeg";
 import umucyo3 from "@/assets/umucyo-3.jpeg";
+import house31 from "@/assets/House3-1.jpeg";
+import house32 from "@/assets/House3-2.jpeg";
+import house33 from "@/assets/House3-3.jpeg";
+import house34 from "@/assets/House3-4.jpeg";
+import house35 from "@/assets/House3-5.jpeg";
+import house36 from "@/assets/House3-6.jpeg";
+import house37 from "@/assets/House3-7.jpeg";
+import house38 from "@/assets/House3-8.jpeg";
+import house39 from "@/assets/House3-9.jpeg";
+import house310 from "@/assets/House3-10.jpeg";
+import house311 from "@/assets/House3-11.jpeg";
+import house312 from "@/assets/House3-12.jpeg";
+import house313 from "@/assets/House3-13.jpeg";
+import house314 from "@/assets/House3-14.jpeg";
+import house315 from "@/assets/House3-15.jpeg";
+import house41 from "@/assets/House4-1.jpeg";
+import house42 from "@/assets/House4-2.jpeg";
+import house43 from "@/assets/House4-3.jpeg";
+import house44 from "@/assets/House4-4.jpeg";
+import house45 from "@/assets/House4-5.jpeg";
+import house46 from "@/assets/House4-6.jpeg";
+import house47 from "@/assets/House4-7.jpeg";
+import house48 from "@/assets/House4-8.jpeg";
+import house49 from "@/assets/House4-9.jpeg";
+import house410 from "@/assets/House4-10.jpeg";
 
 import vid1 from "@/assets/Vid-1.mp4";
 import vid2 from "@/assets/Vid-2.mp4";
@@ -45,6 +70,31 @@ export const images: Record<string, string> = {
   "umucyo-1": umucyo1,
   "umucyo-2": umucyo2,
   "umucyo-3": umucyo3,
+  "house3-1": house31,
+  "house3-2": house32,
+  "house3-3": house33,
+  "house3-4": house34,
+  "house3-5": house35,
+  "house3-6": house36,
+  "house3-7": house37,
+  "house3-8": house38,
+  "house3-9": house39,
+  "house3-10": house310,
+  "house3-11": house311,
+  "house3-12": house312,
+  "house3-13": house313,
+  "house3-14": house314,
+  "house3-15": house315,
+  "house4-1": house41,
+  "house4-2": house42,
+  "house4-3": house43,
+  "house4-4": house44,
+  "house4-5": house45,
+  "house4-6": house46,
+  "house4-7": house47,
+  "house4-8": house48,
+  "house4-9": house49,
+  "house4-10": house410,
 };
 
 /** Sponsored promo posters (UMUCYO HOME Ltd room rates). Shown as an ad slot, not as listings. */
