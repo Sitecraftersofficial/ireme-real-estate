@@ -9,9 +9,18 @@ const UMUCYO_PHONES = [
   { display: "0735 818 085", href: "tel:+250735818085" },
 ];
 
-/** UMUCYO HOME Ltd room-rate posters — shown as-is, all three side by side. */
+/** UMUCYO HOME Ltd room-rate posters — slideshow: one in focus, others as side thumbnails, auto-rotating. */
 export function UmucyoAds() {
+  const [active, setActive] = useState(0);
   const [big, setBig] = useState<number | null>(null);
+
+  // Auto-rotate every 7s; the timer restarts whenever `active` changes
+  // (including a manual pick from the thumbnails or dots).
+  useEffect(() => {
+    if (umucyoAds.length < 2) return;
+    const t = setTimeout(() => setActive((i) => (i + 1) % umucyoAds.length), 7000);
+    return () => clearTimeout(t);
+  }, [active]);
 
   useEffect(() => {
     if (big === null) return;
@@ -30,27 +39,71 @@ export function UmucyoAds() {
       <SectionTitle
         center
         eyebrow="UMUCYO HOME Ltd"
-        title="Need a short stay in Kigali?"
+        title="Need a short stay in Gicumbi?"
         text="Clean rooms at the best price. Call to book."
       />
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-6">
+        {/* Fixed side slots so nothing jumps — each slot crossfades to its next poster. */}
+        {["left", "center", "right"].map((slotName) => {
+          const isCenter = slotName === "center";
+          const slotIndex = isCenter
+            ? active
+            : (active + (slotName === "right" ? 1 : 2)) % umucyoAds.length;
+          const a = umucyoAds[slotIndex];
+          if (!a) return null;
+          return (
+            <button
+              key={slotName}
+              type="button"
+              onClick={() => (isCenter ? setBig(slotIndex) : setActive(slotIndex))}
+              aria-label={isCenter ? "View poster in full size" : `Show poster ${slotIndex + 1}`}
+              className={
+                (isCenter
+                  ? "w-full max-w-md sm:w-96 md:w-[26rem] lg:w-[30rem] xl:w-[34rem]"
+                  : "hidden w-48 lg:w-56 xl:w-64 sm:block") +
+                " group relative overflow-hidden rounded-xl bg-white transition-shadow duration-700 ease-out " +
+                (isCenter ? "shadow-elegant" : "shadow-card opacity-90 hover:opacity-100")
+              }
+            >
+              <div
+                className={
+                  isCenter
+                    ? "flex h-[26rem] w-full items-center justify-center sm:h-[30rem] md:h-[36rem] lg:h-[40rem]"
+                    : "flex h-56 w-full items-center justify-center lg:h-72 xl:h-80"
+                }
+              >
+                {/* All posters stacked; only the slot's own poster is visible, crossfading on change. */}
+                {umucyoAds.map((p, pi) => (
+                  <img
+                    key={p.key}
+                    src={p.src}
+                    alt={pi === slotIndex ? p.alt : ""}
+                    aria-hidden={pi !== slotIndex}
+                    loading="lazy"
+                    width={1080}
+                    height={1080}
+                    className={
+                      "absolute inset-0 mx-auto h-full w-auto max-w-full object-contain transition-opacity duration-1000 ease-in-out " +
+                      (pi === slotIndex ? "opacity-100" : "opacity-0")
+                    }
+                  />
+                ))}
+              </div>
+            </button>
+          );
+        })}
+      </div>
+      <div className="mt-4 flex items-center justify-center gap-2">
         {umucyoAds.map((a, i) => (
           <button
             key={a.key}
             type="button"
-            onClick={() => setBig(i)}
-            aria-label={`View poster ${i + 1} in full size`}
-            className="block overflow-hidden rounded-xl bg-white shadow-elegant transition hover:-translate-y-1"
-          >
-            <img
-              src={a.src}
-              alt={a.alt}
-              loading="lazy"
-              width={1080}
-              height={1080}
-              className="h-auto w-full object-contain"
-            />
-          </button>
+            onClick={() => setActive(i)}
+            aria-label={`Show poster ${i + 1}`}
+            className={`h-2.5 rounded-full transition-all ${
+              i === active ? "w-8 bg-primary" : "w-2.5 bg-primary/30 hover:bg-primary/50"
+            }`}
+          />
         ))}
       </div>
       <div className="mt-6 flex flex-wrap items-center justify-center gap-3">

@@ -46,6 +46,21 @@ import house47 from "@/assets/House4-7.jpeg";
 import house48 from "@/assets/House4-8.jpeg";
 import house49 from "@/assets/House4-9.jpeg";
 import house410 from "@/assets/House4-10.jpeg";
+import house51 from "@/assets/House5-1.jpeg";
+import house52 from "@/assets/House5-2.jpeg";
+import house53 from "@/assets/House5-3.jpeg";
+import house54 from "@/assets/House5-4.jpeg";
+import house55 from "@/assets/House5-5.jpeg";
+import house56 from "@/assets/House5-6.jpeg";
+import house57 from "@/assets/House5-7.jpeg";
+import house58 from "@/assets/House5-8.jpeg";
+import house59 from "@/assets/House5-9.jpeg";
+import land11 from "@/assets/Land1-1.jpeg";
+import house61 from "@/assets/House6-1.jpeg";
+import house62 from "@/assets/House6-2.jpeg";
+import house63 from "@/assets/House6-3.jpeg";
+import house64 from "@/assets/House6-4.jpeg";
+import house65 from "@/assets/House6-5.jpeg";
 
 import vid1 from "@/assets/Vid-1.mp4";
 import vid2 from "@/assets/Vid-2.mp4";
@@ -95,6 +110,21 @@ export const images: Record<string, string> = {
   "house4-8": house48,
   "house4-9": house49,
   "house4-10": house410,
+  "house5-1": house51,
+  "house5-2": house52,
+  "house5-3": house53,
+  "house5-4": house54,
+  "house5-5": house55,
+  "house5-6": house56,
+  "house5-7": house57,
+  "house5-8": house58,
+  "house5-9": house59,
+  "land1-1": land11,
+  "house6-1": house61,
+  "house6-2": house62,
+  "house6-3": house63,
+  "house6-4": house64,
+  "house6-5": house65,
 };
 
 /** Sponsored promo posters (UMUCYO HOME Ltd room rates). Shown as an ad slot, not as listings. */
