@@ -433,7 +433,7 @@ function PropertyDetailPage() {
     } else {
       document.title = "Property not found — IREME";
     }
-  }, [property, params["slug"]]);
+  }, [property, slug]);
 
   if (!property) {
     return (

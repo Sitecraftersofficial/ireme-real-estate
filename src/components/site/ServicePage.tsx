@@ -32,7 +32,9 @@ export function ServicePage({ s }: { s: Service }) {
             className="aspect-4/3 w-full rounded-xl object-cover shadow-elegant"
           />
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">The IREME approach</p>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">
+              The IREME approach
+            </p>
             <h2 className="mt-3 font-display text-4xl font-semibold text-primary">
               Why work with us on {s.name.toLowerCase()}
             </h2>
@@ -52,7 +54,10 @@ export function ServicePage({ s }: { s: Service }) {
           <h2 className="mt-3 font-display text-4xl font-semibold text-primary">What we offer</h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
             {s.offerings.map((o) => (
-              <div key={o.title} className="rounded-xl border border-border bg-card p-6 transition hover:shadow-elegant">
+              <div
+                key={o.title}
+                className="rounded-xl border border-border bg-card p-6 transition hover:shadow-elegant"
+              >
                 <div className="flex items-start gap-4">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold-soft text-primary">
                     <Wrench className="h-5 w-5" />
@@ -81,7 +86,10 @@ export function ServicePage({ s }: { s: Service }) {
                 {i + 1}
               </span>
               {i < s.process.length - 1 && (
-                <span className="absolute left-5 top-10 hidden h-8 w-px bg-border md:block" aria-hidden />
+                <span
+                  className="absolute left-5 top-10 hidden h-8 w-px bg-border md:block"
+                  aria-hidden
+                />
               )}
               <p className="mt-4 font-display text-xl font-semibold text-primary">{step.t}</p>
               <p className="mt-1.5 text-sm text-muted-foreground">{step.d}</p>
@@ -94,11 +102,18 @@ export function ServicePage({ s }: { s: Service }) {
       <section className="mx-auto max-w-7xl px-4 pb-16 md:px-6">
         <div className="grid gap-12 lg:grid-cols-[1fr_400px]">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">Is this for you?</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold text-primary">Who this service is for</h2>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold">
+              Is this for you?
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-semibold text-primary">
+              Who this service is for
+            </h2>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {s.idealFor.map((item) => (
-                <li key={item} className="flex items-start gap-3 rounded-lg border border-border bg-card p-4">
+                <li
+                  key={item}
+                  className="flex items-start gap-3 rounded-lg border border-border bg-card p-4"
+                >
                   <CircleUserRound className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
                   <span className="text-sm text-foreground/85">{item}</span>
                 </li>
@@ -106,7 +121,9 @@ export function ServicePage({ s }: { s: Service }) {
             </ul>
 
             {/* FAQs */}
-            <p className="mt-16 text-xs font-bold uppercase tracking-[0.25em] text-gold">Common questions</p>
+            <p className="mt-16 text-xs font-bold uppercase tracking-[0.25em] text-gold">
+              Common questions
+            </p>
             <h2 className="mt-3 font-display text-4xl font-semibold text-primary">FAQs</h2>
             <div className="mt-8 space-y-3">
               {s.faqs.map((f) => (
@@ -128,7 +145,8 @@ export function ServicePage({ s }: { s: Service }) {
                 <ListChecks className="h-4 w-4" /> Request a quote
               </p>
               <p className="mt-3 text-sm text-primary-foreground/85">
-                Tell us about your project and we'll respond with next steps and an honest assessment.
+                Tell us about your project and we'll respond with next steps and an honest
+                assessment.
               </p>
               <a
                 href={`tel:${site.phoneIntl}`}
@@ -166,28 +184,32 @@ export function ServicePage({ s }: { s: Service }) {
       {/* Other services */}
       <section className="bg-secondary py-16">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <h2 className="font-display text-3xl font-semibold text-primary">Explore our other services</h2>
+          <h2 className="font-display text-3xl font-semibold text-primary">
+            Explore our other services
+          </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {services.filter((x) => x.to !== s.to).map((o) => (
-              <Link
-                key={o.to}
-                to={o.to}
-                className="group overflow-hidden rounded-lg bg-card transition hover:shadow-elegant"
-              >
-                <img
-                  src={o.image}
-                  alt={o.name}
-                  loading="lazy"
-                  width={1280}
-                  height={896}
-                  className="aspect-4/3 w-full object-cover transition duration-700 group-hover:scale-105"
-                />
-                <div className="flex items-center justify-between gap-2 p-4">
-                  <p className="font-display text-lg font-semibold text-primary">{o.name}</p>
-                  <ArrowRight className="h-4 w-4 shrink-0 text-gold transition group-hover:translate-x-1" />
-                </div>
-              </Link>
-            ))}
+            {services
+              .filter((x) => x.to !== s.to)
+              .map((o) => (
+                <Link
+                  key={o.to}
+                  to={o.to}
+                  className="group overflow-hidden rounded-lg bg-card transition hover:shadow-elegant"
+                >
+                  <img
+                    src={o.image}
+                    alt={o.name}
+                    loading="lazy"
+                    width={1280}
+                    height={896}
+                    className="aspect-4/3 w-full object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <div className="flex items-center justify-between gap-2 p-4">
+                    <p className="font-display text-lg font-semibold text-primary">{o.name}</p>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-gold transition group-hover:translate-x-1" />
+                  </div>
+                </Link>
+              ))}
           </div>
         </div>
       </section>

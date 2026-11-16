@@ -173,6 +173,23 @@
     "features": ["3 spacious bedrooms", "Spacious living room", "Dining room", "2 bathrooms and toilets", "Indoor kitchen", "Parking space"]
   },
   {
+    "slug": "apartment-for-sale-kibagabaga-caiman",
+    "title": "Apartment for Sale \u2013 Kibagabaga (Caiman)",
+    "transaction": "sale",
+    "type": "Apartment",
+    "status": "Available",
+    "featured": true,
+    "district": "Gasabo",
+    "city": "Kigali",
+    "price": 900000000,
+    "bedrooms": 9,
+    "bathrooms": 12,
+    "size": 0,
+    "images": ["apartment1-1", "apartment1-2", "apartment1-3"],
+    "description": "A 3-floor apartment building for sale in Kibagabaga, Caiman, Kigali. Features 9 bedrooms (3 per floor), 12 bathrooms, 3 sitting rooms, 3 dining rooms, 3 inside kitchens and parking for 7 cars.",
+    "features": ["3 floors \u2013 9 bedrooms (3 per floor)", "12 bathrooms", "3 sitting rooms", "3 dining rooms", "3 inside kitchens", "Parking for 7 cars"]
+  },
+  {
     "slug": "residential-plot-gasabo",
     "title": "Residential Plot with View",
     "sample": true,

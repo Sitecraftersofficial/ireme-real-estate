@@ -25,8 +25,12 @@ const HIGH = 120; // distance above which pixel is fully logo
 
 for (let i = 0; i < w * h; i++) {
   const o = i * 4;
-  const r = data[o], g = data[o + 1], b = data[o + 2];
-  const dr = r - bg[0], dg = g - bg[1], db = b - bg[2];
+  const r = data[o],
+    g = data[o + 1],
+    b = data[o + 2];
+  const dr = r - bg[0],
+    dg = g - bg[1],
+    db = b - bg[2];
   const dist = Math.sqrt(dr * dr + dg * dg + db * db);
   // alpha ramp between LOW and HIGH
   let a = (dist - LOW) / (HIGH - LOW);

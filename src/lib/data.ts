@@ -62,6 +62,10 @@ import house63 from "@/assets/House6-3.jpeg";
 import house64 from "@/assets/House6-4.jpeg";
 import house65 from "@/assets/House6-5.jpeg";
 
+import apartment11 from "@/assets/Apartment1-1.jpeg";
+import apartment12 from "@/assets/Apartment1-2.jpeg";
+import apartment13 from "@/assets/Apartment1-3.jpeg";
+
 import vid1 from "@/assets/Vid-1.mp4";
 import vid2 from "@/assets/Vid-2.mp4";
 import vid3 from "@/assets/Vid-3.mp4";
@@ -125,6 +129,9 @@ export const images: Record<string, string> = {
   "house6-3": house63,
   "house6-4": house64,
   "house6-5": house65,
+  "apartment1-1": apartment11,
+  "apartment1-2": apartment12,
+  "apartment1-3": apartment13,
 };
 
 /** Sponsored promo posters (UMUCYO HOME Ltd room rates). Shown as an ad slot, not as listings. */

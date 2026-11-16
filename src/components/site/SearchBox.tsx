@@ -28,8 +28,7 @@ export function SearchBox() {
 
   const field =
     "h-9 w-full rounded-md border border-white/30 bg-white/10 px-2.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-gold/60 [&>option]:text-primary";
-  const label =
-    "mb-0.5 block text-[10px] font-bold uppercase tracking-[0.14em] text-white/70";
+  const label = "mb-0.5 block text-[10px] font-bold uppercase tracking-[0.14em] text-white/70";
 
   return (
     <form

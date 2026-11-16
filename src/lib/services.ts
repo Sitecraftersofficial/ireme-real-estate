@@ -32,10 +32,22 @@ export const services = [
       },
     ],
     process: [
-      { t: "Consultation & site visit", d: "We discuss your vision, assess the plot and advise on what's realistic for your budget." },
-      { t: "Design & costing", d: "We help finalise plans and produce a transparent, itemised cost estimate." },
-      { t: "Construction", d: "Our team builds under daily supervision, with agreed checkpoints and progress updates." },
-      { t: "Handover", d: "We walk the finished building with you, rectify snag items and hand over the keys." },
+      {
+        t: "Consultation & site visit",
+        d: "We discuss your vision, assess the plot and advise on what's realistic for your budget.",
+      },
+      {
+        t: "Design & costing",
+        d: "We help finalise plans and produce a transparent, itemised cost estimate.",
+      },
+      {
+        t: "Construction",
+        d: "Our team builds under daily supervision, with agreed checkpoints and progress updates.",
+      },
+      {
+        t: "Handover",
+        d: "We walk the finished building with you, rectify snag items and hand over the keys.",
+      },
     ],
     idealFor: [
       "Families building their first or second home on their own land",
@@ -44,10 +56,22 @@ export const services = [
       "Diaspora building back home who need a trusted team on the ground",
     ],
     faqs: [
-      { q: "Do you work with my own architect's plans?", a: "Yes. If you already have plans, we build to them. If not, we can connect you with architects we trust and manage the process from design onwards." },
-      { q: "How do you keep costs under control?", a: "You receive an itemised estimate before work starts, materials are sourced with supplier invoices, and any change that affects cost is agreed with you in writing first." },
-      { q: "Can you build while I'm outside Rwanda?", a: "Yes — many of our clients are in the diaspora. You receive photo and video progress reports at every stage, and decisions that matter are put to you directly." },
-      { q: "How long does a typical house take?", a: "A standard 3–4 bedroom house usually takes 6–10 months depending on design complexity, weather and material availability. We give you a realistic timeline before we start." },
+      {
+        q: "Do you work with my own architect's plans?",
+        a: "Yes. If you already have plans, we build to them. If not, we can connect you with architects we trust and manage the process from design onwards.",
+      },
+      {
+        q: "How do you keep costs under control?",
+        a: "You receive an itemised estimate before work starts, materials are sourced with supplier invoices, and any change that affects cost is agreed with you in writing first.",
+      },
+      {
+        q: "Can you build while I'm outside Rwanda?",
+        a: "Yes — many of our clients are in the diaspora. You receive photo and video progress reports at every stage, and decisions that matter are put to you directly.",
+      },
+      {
+        q: "How long does a typical house take?",
+        a: "A standard 3–4 bedroom house usually takes 6–10 months depending on design complexity, weather and material availability. We give you a realistic timeline before we start.",
+      },
     ],
   },
   {
@@ -81,10 +105,22 @@ export const services = [
       },
     ],
     process: [
-      { t: "Property assessment", d: "We visit the property, agree the target rent and identify what needs fixing before tenants move in." },
-      { t: "Tenant placement", d: "We market the property, screen applicants and sign a clear tenancy agreement." },
-      { t: "Ongoing management", d: "We handle rent, requests and inspections while you receive regular statements." },
-      { t: "Reporting & review", d: "You get monthly income reports and periodic condition reviews of your property." },
+      {
+        t: "Property assessment",
+        d: "We visit the property, agree the target rent and identify what needs fixing before tenants move in.",
+      },
+      {
+        t: "Tenant placement",
+        d: "We market the property, screen applicants and sign a clear tenancy agreement.",
+      },
+      {
+        t: "Ongoing management",
+        d: "We handle rent, requests and inspections while you receive regular statements.",
+      },
+      {
+        t: "Reporting & review",
+        d: "You get monthly income reports and periodic condition reviews of your property.",
+      },
     ],
     idealFor: [
       "Diaspora owners who can't manage tenants day-to-day",
@@ -93,10 +129,22 @@ export const services = [
       "Families who want their property kept in top condition",
     ],
     faqs: [
-      { q: "What types of property do you manage?", a: "Apartments, family homes, townhouses and small commercial units. We'll assess any property and tell you honestly whether we're the right fit." },
-      { q: "How do I receive my rental income?", a: "Rent is collected on your behalf and transferred to your account on an agreed schedule, with a simple monthly statement showing income and any maintenance costs." },
-      { q: "What happens if a tenant damages the property?", a: "Inspections before and after tenancy, plus deposits held in the tenancy agreement, cover this. We document everything with photos and handle the resolution for you." },
-      { q: "Can I use you for tenant-finding only?", a: "Yes. If you prefer managing the property yourself, we can simply advertise, screen and place a quality tenant for a one-off fee." },
+      {
+        q: "What types of property do you manage?",
+        a: "Apartments, family homes, townhouses and small commercial units. We'll assess any property and tell you honestly whether we're the right fit.",
+      },
+      {
+        q: "How do I receive my rental income?",
+        a: "Rent is collected on your behalf and transferred to your account on an agreed schedule, with a simple monthly statement showing income and any maintenance costs.",
+      },
+      {
+        q: "What happens if a tenant damages the property?",
+        a: "Inspections before and after tenancy, plus deposits held in the tenancy agreement, cover this. We document everything with photos and handle the resolution for you.",
+      },
+      {
+        q: "Can I use you for tenant-finding only?",
+        a: "Yes. If you prefer managing the property yourself, we can simply advertise, screen and place a quality tenant for a one-off fee.",
+      },
     ],
   },
   {
@@ -130,10 +178,22 @@ export const services = [
       },
     ],
     process: [
-      { t: "Discovery", d: "We visit the space, discuss your taste, budget and how you use each room." },
-      { t: "Concept & moodboard", d: "You receive a clear direction — colours, materials and furniture style — before anything is bought." },
-      { t: "Sourcing & delivery", d: "We order items from vetted suppliers and coordinate delivery and installation." },
-      { t: "Styling & reveal", d: "Final styling of the space, with a walkthrough to make sure you love the result." },
+      {
+        t: "Discovery",
+        d: "We visit the space, discuss your taste, budget and how you use each room.",
+      },
+      {
+        t: "Concept & moodboard",
+        d: "You receive a clear direction — colours, materials and furniture style — before anything is bought.",
+      },
+      {
+        t: "Sourcing & delivery",
+        d: "We order items from vetted suppliers and coordinate delivery and installation.",
+      },
+      {
+        t: "Styling & reveal",
+        d: "Final styling of the space, with a walkthrough to make sure you love the result.",
+      },
     ],
     idealFor: [
       "New homeowners starting from an empty shell",
@@ -142,10 +202,22 @@ export const services = [
       "Sellers who want their property photographed and shown at its best",
     ],
     faqs: [
-      { q: "Can we work with my existing furniture?", a: "Absolutely. Many projects start with what you own — we refresh layouts, colours and accessories around the pieces you want to keep." },
-      { q: "What budget do I need?", a: "It depends on scope. A consultation is affordable for any budget; a full room makeover and a whole-home fit-out differ widely. We tell you honestly what your budget can achieve." },
-      { q: "Do you only do modern styles?", a: "No — we design to your taste, whether that's contemporary, warm and traditional, or a blend. The space should feel like you." },
-      { q: "How long does a typical project take?", a: "A single room usually takes 2–4 weeks from concept to styling; larger projects are scheduled phase by phase so you can keep living or working in the space." },
+      {
+        q: "Can we work with my existing furniture?",
+        a: "Absolutely. Many projects start with what you own — we refresh layouts, colours and accessories around the pieces you want to keep.",
+      },
+      {
+        q: "What budget do I need?",
+        a: "It depends on scope. A consultation is affordable for any budget; a full room makeover and a whole-home fit-out differ widely. We tell you honestly what your budget can achieve.",
+      },
+      {
+        q: "Do you only do modern styles?",
+        a: "No — we design to your taste, whether that's contemporary, warm and traditional, or a blend. The space should feel like you.",
+      },
+      {
+        q: "How long does a typical project take?",
+        a: "A single room usually takes 2–4 weeks from concept to styling; larger projects are scheduled phase by phase so you can keep living or working in the space.",
+      },
     ],
   },
   {
@@ -179,10 +251,22 @@ export const services = [
       },
     ],
     process: [
-      { t: "Assessment & quote", d: "We inspect the property, identify what's needed and give you a clear, itemised quote." },
-      { t: "Scheduled work", d: "Work is planned to minimise disruption to your home, site or business." },
-      { t: "Testing & certification", d: "Every circuit we touch is tested before handover — we don't leave until it's safe." },
-      { t: "Aftercare", d: "If anything related to our work fails later, we come back and make it right." },
+      {
+        t: "Assessment & quote",
+        d: "We inspect the property, identify what's needed and give you a clear, itemised quote.",
+      },
+      {
+        t: "Scheduled work",
+        d: "Work is planned to minimise disruption to your home, site or business.",
+      },
+      {
+        t: "Testing & certification",
+        d: "Every circuit we touch is tested before handover — we don't leave until it's safe.",
+      },
+      {
+        t: "Aftercare",
+        d: "If anything related to our work fails later, we come back and make it right.",
+      },
     ],
     idealFor: [
       "New home builders who want wiring done right from day one",
@@ -191,10 +275,22 @@ export const services = [
       "Anyone experiencing breaker trips, flickering lights or dead sockets",
     ],
     faqs: [
-      { q: "Do you handle small jobs or only big installations?", a: "Both. A single faulty socket gets the same professional attention as a full house rewire — no job is too small for a safe fix." },
-      { q: "Can you work while I'm living in the property?", a: "Yes. We phase the work room by room, keep the power on where possible and clean up at the end of each day." },
-      { q: "Are your materials genuine?", a: "We only use certified breakers, cables and fittings from reputable suppliers. Cheap uncertified components are exactly what causes fires." },
-      { q: "Do you install solar or backup power?", a: "Yes — we install inverters and standby power systems, and can coordinate solar panel integration with the wiring design." },
+      {
+        q: "Do you handle small jobs or only big installations?",
+        a: "Both. A single faulty socket gets the same professional attention as a full house rewire — no job is too small for a safe fix.",
+      },
+      {
+        q: "Can you work while I'm living in the property?",
+        a: "Yes. We phase the work room by room, keep the power on where possible and clean up at the end of each day.",
+      },
+      {
+        q: "Are your materials genuine?",
+        a: "We only use certified breakers, cables and fittings from reputable suppliers. Cheap uncertified components are exactly what causes fires.",
+      },
+      {
+        q: "Do you install solar or backup power?",
+        a: "Yes — we install inverters and standby power systems, and can coordinate solar panel integration with the wiring design.",
+      },
     ],
   },
   {
@@ -228,10 +324,22 @@ export const services = [
       },
     ],
     process: [
-      { t: "Security assessment", d: "We walk the property with you, identify vulnerable points and agree the coverage you need." },
-      { t: "System design & quote", d: "You receive a camera layout, equipment list and clear pricing — no vague packages." },
-      { t: "Installation", d: "Neat cabling, proper mounting and configuration of recording and remote access." },
-      { t: "Training & support", d: "We show you how to use the system on your own phone, and remain available for support." },
+      {
+        t: "Security assessment",
+        d: "We walk the property with you, identify vulnerable points and agree the coverage you need.",
+      },
+      {
+        t: "System design & quote",
+        d: "You receive a camera layout, equipment list and clear pricing — no vague packages.",
+      },
+      {
+        t: "Installation",
+        d: "Neat cabling, proper mounting and configuration of recording and remote access.",
+      },
+      {
+        t: "Training & support",
+        d: "We show you how to use the system on your own phone, and remain available for support.",
+      },
     ],
     idealFor: [
       "Homeowners wanting to watch their property from abroad",
@@ -240,10 +348,22 @@ export const services = [
       "Anyone who has experienced a break-in and wants it never to repeat",
     ],
     faqs: [
-      { q: "Can I really watch the cameras from outside Rwanda?", a: "Yes. The system connects through your internet so you can view live footage and recordings from your phone anywhere in the world." },
-      { q: "What happens when power goes off?", a: "We size the recording system with battery backup so cameras and recording continue through outages — essential in any security setup." },
-      { q: "How is the footage stored?", a: "On a recorder at your property with storage sized for how far back you want to review — typically weeks. We help you choose the right capacity." },
-      { q: "Do you offer systems for small budgets?", a: "Yes. We design around what matters most to you — for example covering entrances and the gate only — so you get real security at a cost you're comfortable with." },
+      {
+        q: "Can I really watch the cameras from outside Rwanda?",
+        a: "Yes. The system connects through your internet so you can view live footage and recordings from your phone anywhere in the world.",
+      },
+      {
+        q: "What happens when power goes off?",
+        a: "We size the recording system with battery backup so cameras and recording continue through outages — essential in any security setup.",
+      },
+      {
+        q: "How is the footage stored?",
+        a: "On a recorder at your property with storage sized for how far back you want to review — typically weeks. We help you choose the right capacity.",
+      },
+      {
+        q: "Do you offer systems for small budgets?",
+        a: "Yes. We design around what matters most to you — for example covering entrances and the gate only — so you get real security at a cost you're comfortable with.",
+      },
     ],
   },
 ] as const;
