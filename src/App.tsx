@@ -140,7 +140,34 @@ function HomePage() {
     "IREME Real Estate — Homes, Apartments & Land in Kigali",
     "Find homes, apartments, land and investment properties across Kigali and Rwanda with IREME Real Estate. Your Property. Our Priority.",
   );
-  const featured = properties.filter((p) => p.featured).slice(0, 6);
+  // Property entries are added in chronological order; exclude demo listings and show the newest five.
+  const featured = properties
+    .filter((p) => !p.sample)
+    .slice(-5)
+    .reverse();
+  const featuredPageCount = featured.length;
+  const [featuredPage, setFeaturedPage] = useState(0);
+  const [featuredDirection, setFeaturedDirection] = useState(1);
+  const [featuredPaused, setFeaturedPaused] = useState(false);
+  const featuredPageProperties =
+    featured.length > 1
+      ? [featured[featuredPage % featured.length], featured[(featuredPage + 1) % featured.length]]
+      : featured;
+
+  useEffect(() => {
+    if (featuredPaused || featuredPageCount < 2) return;
+    const timer = setInterval(() => {
+      setFeaturedDirection(1);
+      setFeaturedPage((page) => (page + 1) % featuredPageCount);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [featuredPageCount, featuredPaused]);
+
+  const changeFeatured = (page: number) => {
+    setFeaturedDirection(page >= featuredPage ? 1 : -1);
+    setFeaturedPage((page + featuredPageCount) % featuredPageCount);
+  };
+
   return (
     <>
       <section className="relative isolate overflow-hidden bg-navy-deep text-primary-foreground">
@@ -208,10 +235,73 @@ function HomePage() {
             View all properties <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((p) => (
-            <PropertyCard key={p.slug} p={p} />
-          ))}
+        <div
+          className="mx-2 mt-10 max-w-6xl sm:mx-auto"
+          onMouseEnter={() => setFeaturedPaused(true)}
+          onMouseLeave={() => setFeaturedPaused(false)}
+          aria-roledescription="carousel"
+          aria-label="Latest properties"
+        >
+          <div
+            className={`grid items-center gap-1 sm:gap-4 ${
+              featuredPageCount > 1 ? "grid-cols-[auto_minmax(0,1fr)_auto]" : "grid-cols-1"
+            }`}
+          >
+            {featuredPageCount > 1 && (
+              <button
+                type="button"
+                aria-label="Previous latest properties"
+                onClick={() => changeFeatured(featuredPage - 1)}
+                className="rounded-full border-2 border-primary bg-primary p-1 text-primary-foreground shadow-lg transition hover:bg-navy-deep hover:text-gold sm:p-3"
+              >
+                <ChevronLeft className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
+              </button>
+            )}
+            {featuredPageProperties.length > 0 && (
+              <div
+                key={featuredPage}
+                className={`featured-slide-enter grid min-w-0 grid-cols-1 gap-7 sm:grid-cols-2 ${
+                  featuredDirection > 0 ? "featured-slide-next" : "featured-slide-previous"
+                }`}
+                aria-roledescription="slide"
+                aria-label={`${featuredPage + 1} of ${featuredPageCount}`}
+              >
+                {featuredPageProperties.map((property, index) => (
+                  <div key={property.slug} className={index === 1 ? "hidden sm:block" : undefined}>
+                    <PropertyCard p={property} />
+                  </div>
+                ))}
+              </div>
+            )}
+            {featuredPageCount > 1 && (
+              <button
+                type="button"
+                aria-label="Next latest properties"
+                onClick={() => changeFeatured(featuredPage + 1)}
+                className="rounded-full border-2 border-primary bg-primary p-1 text-primary-foreground shadow-lg transition hover:bg-navy-deep hover:text-gold sm:p-3"
+              >
+                <ChevronRight className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
+              </button>
+            )}
+          </div>
+          {featuredPageCount > 1 && (
+            <>
+              <div className="mt-5 flex justify-center gap-2">
+                {Array.from({ length: featuredPageCount }, (_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    aria-label={`Show latest properties ${index + 1} and ${((index + 1) % featured.length) + 1}`}
+                    aria-current={index === featuredPage}
+                    onClick={() => changeFeatured(index)}
+                    className={`h-2 rounded-full transition-all ${
+                      index === featuredPage ? "w-8 bg-gold" : "w-2 bg-border hover:bg-gold/60"
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
