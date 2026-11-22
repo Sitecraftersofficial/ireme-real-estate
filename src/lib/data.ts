@@ -65,6 +65,25 @@ import house65 from "@/assets/houses-sale/House6-5.jpeg";
 import apartment11 from "@/assets/apartments-sale/Apartment1-1.jpeg";
 import apartment12 from "@/assets/apartments-sale/Apartment1-2.jpeg";
 import apartment13 from "@/assets/apartments-sale/Apartment1-3.jpeg";
+import house71 from "@/assets/houses-sale/House7-1.jpeg";
+import house72 from "@/assets/houses-sale/House7-2.jpeg";
+import house73 from "@/assets/houses-sale/House7-3.jpeg";
+import house74 from "@/assets/houses-sale/House7-4.jpeg";
+import house75 from "@/assets/houses-sale/House7-5.jpeg";
+import house76 from "@/assets/houses-sale/House7-6.jpeg";
+import house77 from "@/assets/houses-sale/House7-7.jpeg";
+import house78 from "@/assets/houses-sale/House7-8.jpeg";
+import rentHouse11 from "@/assets/houses-rent/House1-1.jpeg";
+import rentHouse12 from "@/assets/houses-rent/House1-2.jpeg";
+import rentHouse13 from "@/assets/houses-rent/House1-3.jpeg";
+import rentHouse14 from "@/assets/houses-rent/House1-4.jpeg";
+import rentHouse15 from "@/assets/houses-rent/House1-5.jpeg";
+import rentHouse16 from "@/assets/houses-rent/House1-6.jpeg";
+import rentHouse17 from "@/assets/houses-rent/House1-7.jpeg";
+import rentHouse18 from "@/assets/houses-rent/House1-8.jpeg";
+import rentHouse19 from "@/assets/houses-rent/House1-9.jpeg";
+import rentHouse110 from "@/assets/houses-rent/House1-10.jpeg";
+import rentHouse111 from "@/assets/houses-rent/House1-11.jpeg";
 
 import vid1 from "@/assets/Vid-1.mp4";
 import vid2 from "@/assets/Vid-2.mp4";
@@ -132,6 +151,25 @@ export const images: Record<string, string> = {
   "apartment1-1": apartment11,
   "apartment1-2": apartment12,
   "apartment1-3": apartment13,
+  "house7-1": house71,
+  "house7-2": house72,
+  "house7-3": house73,
+  "house7-4": house74,
+  "house7-5": house75,
+  "house7-6": house76,
+  "house7-7": house77,
+  "house7-8": house78,
+  "rent-house1-1": rentHouse11,
+  "rent-house1-2": rentHouse12,
+  "rent-house1-3": rentHouse13,
+  "rent-house1-4": rentHouse14,
+  "rent-house1-5": rentHouse15,
+  "rent-house1-6": rentHouse16,
+  "rent-house1-7": rentHouse17,
+  "rent-house1-8": rentHouse18,
+  "rent-house1-9": rentHouse19,
+  "rent-house1-10": rentHouse110,
+  "rent-house1-11": rentHouse111,
 };
 
 /** Sponsored promo posters (UMUCYO HOME Ltd room rates). Shown as an ad slot, not as listings. */
@@ -202,6 +240,7 @@ const propertySchema = z.object({
   title: z.string(),
   sample: z.boolean().optional(),
   transaction: z.enum(["sale", "rent"]),
+  currency: z.enum(["RWF", "USD"]).optional(),
   type: z.enum(PROPERTY_TYPES),
   status: z.enum(STATUSES),
   featured: z.boolean(),
@@ -257,8 +296,11 @@ export const faqs = z.array(z.object({ q: z.string(), a: z.string() })).parse(fa
 export const getProperty = (slug: string) => allProperties.find((p) => p.slug === slug);
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
 
-export function formatPrice(p: Pick<Property, "price" | "transaction">) {
-  const v = `RWF ${p.price.toLocaleString("en-US")}`;
+export function formatPrice(p: Pick<Property, "price" | "transaction" | "currency">) {
+  const v =
+    p.currency === "USD"
+      ? `$${p.price.toLocaleString("en-US")} USD`
+      : `RWF ${p.price.toLocaleString("en-US")}`;
   return p.transaction === "rent" ? `${v} / month` : v;
 }
 
