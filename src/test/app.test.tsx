@@ -1,7 +1,15 @@
 import { describe, expect, it } from "vitest";
 
 import { buildHref, searchToString } from "@/router";
-import { properties, posts, faqs, site, getProperty, getPost } from "@/lib/data";
+import {
+  properties,
+  posts,
+  faqs,
+  site,
+  getProperty,
+  getPost,
+  buildPropertyUrl,
+} from "@/lib/data";
 
 describe("Content data", () => {
   it("has valid properties, posts, faqs and site info", () => {
@@ -21,6 +29,12 @@ describe("Content data", () => {
 describe("Router helpers", () => {
   it("builds hrefs with path params and search params", () => {
     expect(buildHref("/properties/$slug", { slug: "villa-123" })).toBe("/properties/villa-123");
+    expect(buildHref("/properties/$slug", { slug: "villa & 123" })).toBe(
+      "/properties/villa%20%26%20123",
+    );
+    expect(buildPropertyUrl("villa & 123")).toBe(
+      "https://www.iremerealestate.com/properties/villa%20%26%20123",
+    );
     expect(searchToString({ transaction: "sale", minPrice: 1000 })).toBe(
       "?transaction=sale&minPrice=1000",
     );

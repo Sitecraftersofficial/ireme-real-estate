@@ -53,8 +53,7 @@ export function PropertyCard({ p }: { p: Property }) {
           </div>
           <div className="pointer-events-auto absolute right-3 top-3">
             <ShareButton
-              slug={p.slug}
-              title={p.title}
+              property={p}
               className="cursor-pointer rounded-full bg-background/95 p-2 text-primary hover:text-gold"
             />
           </div>

@@ -523,7 +523,7 @@ function PropertyDetailPage() {
     } else {
       document.title = "Property not found — IREME";
     }
-  }, [property, slug]);
+  }, [property]);
 
   if (!property) {
     return (
@@ -644,8 +644,7 @@ function PropertyDetailPage() {
             </h1>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <ShareButton
-                slug={p.slug}
-                title={p.title}
+                property={p}
                 className="rounded-md bg-gold px-6 py-3 font-bold text-foreground transition hover:brightness-95"
               />
               <a

@@ -296,6 +296,10 @@ export const faqs = z.array(z.object({ q: z.string(), a: z.string() })).parse(fa
 export const getProperty = (slug: string) => allProperties.find((p) => p.slug === slug);
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
 
+export function buildPropertyUrl(slug: string) {
+  return `https://www.iremerealestate.com/properties/${encodeURIComponent(slug)}`;
+}
+
 export function formatPrice(p: Pick<Property, "price" | "transaction" | "currency">) {
   const v =
     p.currency === "USD"

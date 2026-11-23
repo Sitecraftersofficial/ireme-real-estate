@@ -86,7 +86,11 @@ export function useParams(pattern: string): Record<string, string> {
   for (let i = 0; i < patternParts.length; i++) {
     const part = patternParts[i] ?? "";
     if (part.startsWith("$")) {
-      params[part.slice(1)] = pathParts[i] ?? "";
+      try {
+        params[part.slice(1)] = decodeURIComponent(pathParts[i] ?? "");
+      } catch {
+        params[part.slice(1)] = pathParts[i] ?? "";
+      }
     }
   }
   return params;
